@@ -18,7 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src", // setup for bulma-react to locate _variable.sass
+    "noImplicitAny": false // or else i can't import bulma components even though they are there!
   },
   "include": [
     "src"
