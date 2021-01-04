@@ -1,0 +1,13 @@
+/* to import global css theme configuration */
+@import '../../_variables.sass';
+
+:root {
+	--size-multiplier: 1;
+}
+
+.news-card {
+	width: calc(25rem * var(--size-multiplier));
+	height: calc(20rem * var(--size-multiplier));
+	margin: calc(1rem * var(--size-multiplier));
+	display: inline-block; /* to make cards spread horizontally instead to new line */
+}
