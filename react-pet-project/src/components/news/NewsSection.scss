@@ -1,0 +1,22 @@
+.tags-title {
+	font-weight: bold;
+	font-size: calc(1.25rem * var(--text-size-multiplier));
+	line-height: calc(1.75rem * var(--text-size-multiplier));
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-align: left;
+	margin: calc(1rem * var(--margin-multiplier)) 0 calc(0.5rem * var(--margin-multiplier));
+}
+
+.news-section {
+	padding: calc(1.5rem * var(--margin-multiplier)) calc(2rem * var(--margin-multiplier));
+}
+
+.news-section-line {
+	width: 100%;
+	margin: calc(0.5rem * var(--margin-multiplier)) 0 calc(1rem * var(--margin-multiplier));
+	border: none;
+	height: 1px;
+	/* Set the hr color */
+	color: rgb(83, 83, 83); /* old IE */
+	background-color: rgb(194, 194, 194); /* Modern Browsers */
+}

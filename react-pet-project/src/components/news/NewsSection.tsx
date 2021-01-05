@@ -1,74 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import NewsCard from './NewsCard';
 import { INewsCardProps } from 'interfaces/news/INewsCardProps';
-import { fetchLineNews } from 'api/news';
+import { NewsActiveTabContext } from 'contexts/News';
+import './NewsSection.scss';
 
-const NewsSection = () => {
-	const [newsPool, setNewsPool] = useState<any | undefined>(undefined);
-
-	useEffect(() => {
-		const { cancel, request } = fetchLineNews();
-		request
-			.then((data) => {
-				const sortedNews = sortNewsIntoCategories(data);
-				console.log(sortedNews);
-				setNewsPool(sortedNews);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-
-		return () => {
-			cancel();
-		};
-	});
-
-	const sortNewsIntoCategories = (data) => {
-		if (!data) {
-			return;
-		}
-		const sortedNews = {};
-
-		data.result.categories.forEach((category) => {
-			sortedNews[category.name] = {};
-			sortedNews[category.name]['untagged'] = [];
-			category.templates.forEach((template) => {
-				const tags = template.title || 'untagged';
-				if (tags) {
-					sortedNews[category.name][tags] = [];
-				}
-				template.sections.forEach((section) => {
-					section.articles.forEach((article) => {
-						// remove ads and invalid articles
-						if (article.id > 0 && article.source !== 'AD') sortedNews[category.name][tags].push(article);
-					});
-				});
-			});
-		});
-
-		return sortedNews;
-	};
+const NewsSection = (newsPool: any) => {
+	const { currentActiveTab } = useContext(NewsActiveTabContext); // will rerender everytime context changes
 
 	const iterateNews = () => {
 		if (newsPool) {
+			console.log('Rendering category: ', currentActiveTab);
 			const newsCards: JSX.Element[] = [];
-			for (let category in newsPool) {
-				for (let tags in newsPool[category]) {
-					newsPool[category][tags].forEach((article) => {
-						const newsProps: INewsCardProps = {
-							title: article.title,
-							imageHash: article.thumbnail?.hash,
-							publisher: article.publisher
-						};
-						newsCards.push(<NewsCard {...newsProps}></NewsCard>);
-					});
-				}
+			console.log(newsPool[currentActiveTab]);
+			for (let tags in newsPool[currentActiveTab]) {
+				if (tags === 'untagged' || newsPool[currentActiveTab][tags].length <= 0) continue;
+				newsCards.push(
+					<>
+						<div className="tags-title">{tags}</div>
+						<hr className="news-section-line" />
+					</>
+				);
+				newsPool[currentActiveTab][tags].forEach((article) => {
+					const newsProps: INewsCardProps = {
+						title: article.title,
+						imageHash: article.thumbnail?.hash,
+						publisher: article.publisher
+					};
+					// CAREFUL! IF KEY IS NOT UNIQUE, DUPLICATES RERENDER CAN HAPPEN
+					newsCards.push(<NewsCard key={tags + article.id} {...newsProps}></NewsCard>);
+				});
 			}
 			return <>{newsCards}</>;
 		}
 	};
 	return (
-		<div>
+		<div className="news-section">
 			{iterateNews()}
 			{/* <NewsCard {...temp}></NewsCard>
 			<NewsCard {...temp}></NewsCard> */}

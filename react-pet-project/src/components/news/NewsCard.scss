@@ -1,13 +1,32 @@
-/* to import global css theme configuration */
-@import '../../_variables.sass';
-
-:root {
-	--size-multiplier: 1;
+.news-card {
+	width: calc(22.75rem * var(--size-multiplier));
+	height: calc(20rem * var(--size-multiplier-height));
+	margin: calc(0.5rem * var(--margin-multiplier));
+	display: inline-block; /* to make cards spread horizontally instead to new line */
+	vertical-align: top; /* to fix odd positioning from inline-block */
 }
 
-.news-card {
-	width: calc(25rem * var(--size-multiplier));
-	height: calc(20rem * var(--size-multiplier));
-	margin: calc(1rem * var(--size-multiplier));
-	display: inline-block; /* to make cards spread horizontally instead to new line */
+.news-title {
+	padding: calc(0.5rem * var(--size-multiplier)) !important;
+}
+
+.news-title-text {
+	font-size: calc(0.9375rem * var(--text-size-multiplier));
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 500;
+	text-align: left;
+	word-break: break-word;
+	margin: 0 !important;
+}
+
+.news-publisher-text {
+	font-size: calc(0.75rem * var(--text-size-multiplier));
+	line-height: calc(1.125rem * var(--text-size-multiplier));
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 400;
+	text-align: left;
+	word-break: break-word;
+	margin: 0;
+	overflow: hidden;
+	color: #9f9f9f;
 }
