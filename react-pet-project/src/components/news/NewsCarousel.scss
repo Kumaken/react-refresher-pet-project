@@ -1,0 +1,13 @@
+.news-carousel {
+	height: calc(20rem * var(--size-multiplier-height));
+	// overflow: hidden;
+}
+
+.news-carousel-img {
+	height: calc(20rem * var(--size-multiplier-height));
+	object-fit: cover; // to prevent stretching
+}
+
+// .thumb {
+// 	object-fit: cover;
+// }

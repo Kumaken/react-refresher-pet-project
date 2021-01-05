@@ -5,7 +5,7 @@ import NewsTabs from 'components/news/NewsTabs';
 
 import React from 'react';
 
-const Home = () => {
+const Games = () => {
 	return (
 		<>
 			<LoginButton></LoginButton>
@@ -16,4 +16,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Games;

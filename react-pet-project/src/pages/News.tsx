@@ -1,5 +1,5 @@
 import { fetchLineNews } from 'api/news';
-import NavbarComponent from 'components/navbar/NavbarComponent';
+import NewsCarousel from 'components/news/NewsCarousel';
 import NewsSection from 'components/news/NewsSection';
 import NewsTabs from 'components/news/NewsTabs';
 import { NewsActiveTabContext } from 'contexts/News';
@@ -24,7 +24,8 @@ const News = () => {
 				template.sections.forEach((section) => {
 					section.articles.forEach((article) => {
 						// remove ads and invalid articles
-						if (article.id > 0 && article.source !== 'AD') sortedNews[category.name][tags].push(article);
+						if (article.id > 0 && article.source !== 'AD' && article.thumbnail)
+							sortedNews[category.name][tags].push(article);
 					});
 				});
 			});
@@ -62,8 +63,8 @@ const News = () => {
 
 	return (
 		<NewsActiveTabContext.Provider value={{ currentActiveTab, setCurrentActiveTab }}>
-			<NavbarComponent></NavbarComponent>
 			<NewsTabs categoryList={newsCategories}></NewsTabs>
+			<NewsCarousel {...newsPool}></NewsCarousel>
 			<NewsSection {...newsPool}></NewsSection>
 			{/* needs to be passed with 'categoryList' key because the value is a list and can't be spread*/}
 		</NewsActiveTabContext.Provider>

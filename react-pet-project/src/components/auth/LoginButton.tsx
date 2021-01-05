@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // import { useGoogleLogin } from 'react-google-login';
 import './LoginButton.css';
 
@@ -8,14 +8,18 @@ import refreshTokenSetup from '../../utils/RefreshTokenSetup';
 import { GOOGLE_OAUTH_CLIENT_ID } from '../../config/config';
 // button
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { LoginContext } from 'contexts/Login';
+import Navbar from 'react-bulma-components/lib/components/navbar';
 
 const LoginButton = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const { setUsername } = useContext(LoginContext);
 
 	const onSuccess = (resp: any) => {
 		console.log('Login Success: currentUser:', resp.profileObj);
 		refreshTokenSetup(resp);
 		setIsLoggedIn(true);
+		setUsername(resp.profileObj.name);
 		alert(`Logged in successfully welcome ${resp.profileObj.name} 😍. \n See console for full profile object.`);
 	};
 
@@ -27,6 +31,7 @@ const LoginButton = () => {
 	const onLogoutSuccess = () => {
 		console.log('Logged out Successful!');
 		setIsLoggedIn(false);
+		setUsername('');
 		alert('Logged out Successfully ✌');
 	};
 
@@ -56,12 +61,19 @@ const LoginButton = () => {
 					isSignedIn={true}
 				/>
 			) : (
-				<GoogleLogout
-					clientId={GOOGLE_OAUTH_CLIENT_ID!}
-					buttonText="Logout"
-					onLogoutSuccess={onLogoutSuccess}
-					onFailure={onLogoutFailure}
-				/>
+				<Navbar.Item dropdown hoverable href="#">
+					<Navbar.Link arrowless={true}>Games</Navbar.Link>
+					<Navbar.Dropdown>
+						<Navbar.Item>
+							<GoogleLogout
+								clientId={GOOGLE_OAUTH_CLIENT_ID!}
+								buttonText="Logout"
+								onLogoutSuccess={onLogoutSuccess}
+								onFailure={onLogoutFailure}
+							/>
+						</Navbar.Item>
+					</Navbar.Dropdown>
+				</Navbar.Item>
 			)}
 		</>
 
