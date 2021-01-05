@@ -4,7 +4,6 @@ import { INewsCardProps } from 'interfaces/news/INewsCardProps';
 import { fetchLineNews } from 'api/news';
 
 const NewsSection = () => {
-	const temp: INewsCardProps = { title: 'hello', imageHash: 'aa', publisher: 'hay' };
 	const [newsPool, setNewsPool] = useState<any | undefined>(undefined);
 
 	useEffect(() => {
