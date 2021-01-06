@@ -28,3 +28,16 @@
 	left: 30px;
 	align-items: center;
 }
+
+.profile-img {
+	width: 2.5rem;
+	object-fit: cover;
+}
+
+.google-login-button {
+	display: flex; // both container and self needs to be flex?
+	justify-content: center; // align horizontally
+	width: 100% !important; // needs this for horizontal center
+	align-items: center; // align vertically
+	height: 2.6rem;
+}
