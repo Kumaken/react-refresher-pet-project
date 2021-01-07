@@ -1,6 +1,6 @@
 import LoginButton from 'components/auth/LoginButton';
 import { LoginContext } from 'contexts/Login';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // import Navbar from 'react-bulma-components/lib/components/navbar';
 import Navbar from 'react-bulma-components/lib/components/navbar';
 import { Link } from 'react-router-dom';
@@ -8,11 +8,12 @@ import './NavbarComponent.scss';
 
 const NavbarComponent = () => {
 	const { username } = useContext(LoginContext);
+	const [navbarActive, setNavbarActive] = useState(false);
 
 	return (
-		<Navbar color="black" fixed="top" active={false} transparent={false}>
+		<Navbar color="black" fixed="top" active={navbarActive} transparent={false}>
 			<Navbar.Brand>
-				<Navbar.Burger />
+				<Navbar.Burger onClick={() => setNavbarActive(!navbarActive)} />
 			</Navbar.Brand>
 			<Navbar.Menu className="navbar-menu">
 				<Navbar.Container>

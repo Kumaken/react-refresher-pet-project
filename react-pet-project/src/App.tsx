@@ -19,7 +19,7 @@ function App() {
 					<NavbarComponent></NavbarComponent>
 
 					<Switch>
-						<Route path="/">
+						<Route path="/" exact>
 							<News></News>
 						</Route>
 						<Route path="/news">

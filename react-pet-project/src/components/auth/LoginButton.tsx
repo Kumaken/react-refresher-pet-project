@@ -69,11 +69,11 @@ const LoginButton = () => {
 					isSignedIn={true}
 				/>
 			) : (
-				<Navbar.Item dropdown hoverable>
+				<Navbar.Item className="profile-item" dropdown hoverable>
 					<Navbar.Item arrowless={false}>
 						<Image rounded className="profile-img" src={imageUrl}></Image>
 					</Navbar.Item>
-					<Navbar.Dropdown>
+					<Navbar.Dropdown className="is-right">
 						<Navbar.Item onClick={signOut}>
 							Logout
 							{/* <GoogleLogout
