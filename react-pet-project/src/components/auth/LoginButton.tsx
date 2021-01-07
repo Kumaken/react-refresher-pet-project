@@ -69,10 +69,10 @@ const LoginButton = () => {
 					isSignedIn={true}
 				/>
 			) : (
-				<Navbar.Item dropdown hoverable href="#">
-					<Navbar.Link arrowless={false}>
+				<Navbar.Item dropdown hoverable>
+					<Navbar.Item arrowless={false}>
 						<Image rounded className="profile-img" src={imageUrl}></Image>
-					</Navbar.Link>
+					</Navbar.Item>
 					<Navbar.Dropdown>
 						<Navbar.Item onClick={signOut}>
 							Logout
