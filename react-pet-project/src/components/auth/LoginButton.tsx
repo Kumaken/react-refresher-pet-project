@@ -7,7 +7,7 @@ import refreshTokenSetup from '../../utils/RefreshTokenSetup';
 // credentials
 import { GOOGLE_OAUTH_CLIENT_ID } from '../../config/config';
 // button
-import { GoogleLogin, GoogleLogout, useGoogleLogout } from 'react-google-login';
+import { GoogleLogin, useGoogleLogout } from 'react-google-login';
 import { LoginContext } from 'contexts/Login';
 import Navbar from 'react-bulma-components/lib/components/navbar';
 import Image from 'react-bulma-components/lib/components/image';
