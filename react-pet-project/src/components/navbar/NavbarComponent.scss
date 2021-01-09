@@ -1,6 +1,20 @@
 a {
-	color: rgb(0, 110, 255);
-}
-a:hover {
 	color: #ea00ff;
 }
+a:hover {
+	color: #00f7ff;
+}
+
+.title {
+	position: relative;
+	display: inline-block;
+	top: 0.7rem; // this works with absolute or relative
+	margin-right: 1rem;
+	margin-left: 0.5rem;
+	font-size: calc(2rem * var(--text-size-multiplier));
+	color: aliceblue;
+}
+
+// .brand {
+// 	width: 100%;
+// }

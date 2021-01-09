@@ -10,9 +10,11 @@ const NavbarComponent = () => {
 	const { username } = useContext(LoginContext);
 	const [navbarActive, setNavbarActive] = useState(false);
 
+	// setting brand to active=false somehow fixes title position when in mobile view lol
 	return (
 		<Navbar color="black" fixed="top" active={navbarActive} transparent={false}>
-			<Navbar.Brand>
+			<Navbar.Brand className="brand" active={false}>
+				<h1 className="title">LINE TODAY</h1>
 				<Navbar.Burger onClick={() => setNavbarActive(!navbarActive)} />
 			</Navbar.Brand>
 			<Navbar.Menu className="navbar-menu">
