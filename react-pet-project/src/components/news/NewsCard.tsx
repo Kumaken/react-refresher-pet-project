@@ -1,10 +1,6 @@
 import React from 'react';
 import Card from 'react-bulma-components/lib/components/card';
-import Media from 'react-bulma-components/lib/components/media';
-import Image from 'react-bulma-components/lib/components/image';
 import Content from 'react-bulma-components/lib/components/content';
-import Heading from 'react-bulma-components/lib/components/heading';
-import { RouteComponentProps } from 'react-router-dom';
 
 import './NewsCard.scss';
 import { INewsCardProps } from 'interfaces/news/INewsCardProps';
